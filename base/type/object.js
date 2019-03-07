@@ -89,14 +89,47 @@
 // }
 
 // console.log(f(20))
-let b = {
-  // _name:"tianbaolin",
-  // set name(param){ this._name = param ;return param},
-  // get name(){return this._name}
-  }
-Object.defineProperty(b,'_name',{
-  value:'hello',
-  enumerable:false
-})
-let a = Object.assign({},b)
-console.log(b)
+// let b = {
+//   // _name:"tianbaolin",
+//   // set name(param){ this._name = param ;return param},
+//   // get name(){return this._name}
+//   }
+// Object.defineProperty(b,'_name',{
+//   value:'hello',
+//   enumerable:false
+// })
+// let a = Object.assign({},b)
+// console.log(b)
+// function People(x,y){
+//   // console.log(this)
+//   this.x = x;
+//   this.y = y;
+// }
+// People.prototype.add = function(x,y){
+//   this.x = x;
+//   this.y = y
+//   console.log(this.x + this.y)
+// }
+// let xiaomin = new People(1,2)
+// console.log(xiaomin)
+// xiaomin.add(3,4)
+// console.log(xiaomin)
+// function Man(x,y){
+//   People.call(this,x,y)
+// }
+
+// Man.prototype = Object.create(People.prototype)
+// Man.prototype.constructor = Man
+// let xiaomin = new Man(1,2)
+// console.log(xiaomin)
+
+// // console.log(xiaomin)
+// // console.log(global)
+// console.log(xiaomin)
+let a = Object.create(null,{key:{
+  value:'tianbaolin',
+  configurable:true,
+  writable:true,
+  enumerable:true
+}})
+console.log(a)
