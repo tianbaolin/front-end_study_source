@@ -126,10 +126,106 @@
 // // console.log(xiaomin)
 // // console.log(global)
 // console.log(xiaomin)
-let a = Object.create(null,{key:{
-  value:'tianbaolin',
-  configurable:true,
-  writable:true,
+// let a = Object.create(null,{key:{
+//   value:'tianbaolin',
+//   configurable:true,
+//   writable:true,
+//   enumerable:true
+// }})
+// Object.defineProperty(a,'key',{value:'tbl',writable:false})
+// a.key = ''
+// console.log(a)
+// function People(){
+//   let _name = null;
+//   let count=0;
+//   Object.defineProperty(this,'name',{
+//     set:function(val){
+//       _name = val
+//       count++
+//     },
+//     get:function(){
+//       return _name
+//     }
+//   })
+//   this.getCount = function(){
+//     return count
+//   }
+// }
+
+// let man = new People()
+// console.log(man)
+// man.name = ''
+// man.name = ''
+// man.name = ''
+// console.log(man)
+
+// function People(){
+//   // this.constructor.prototype.x = 2
+//   let _name = null
+//   let __name = ''
+//   Object.defineProperty(this.constructor.prototype,'name',{
+//     // value: _name
+//     set:function(val){
+//       console.log('set2')
+//       this._name = val
+//     },
+//     get:function(){
+//       return this._name
+//     },
+//     configurable:true
+//   })
+  // Object.defineProperty(this,'name',{
+  //   value:'',
+  //   writable:true
+    // set:function(val){
+    //   console.log('set1')
+    //   __name = val
+    // },
+    // get:function(){
+    //   return __name
+    // }
+  // })
+  // People.prototype.x = 2
+  // this.__proto__ = 2
+// }
+// People.prototype.a = '213'
+// let a = new People()
+// let b = new People()
+// console.log(a.name,b.name)
+function People(){
+}
+// People.prototype = {
+//   _name:'123',
+//   set name(val){
+//     console.log('4324')
+//     this._name = val
+//   },
+//   get name(){
+//     console.log('get')
+//     return this._name
+//   }
+// }
+People.prototype._name = 'tianbaolin'
+Object.defineProperty(People.prototype,'name',{
+  get: function(){
+    console.log('gey')
+    return this._name
+  },
+  set : function(val){
+    this._name
+  },
   enumerable:true
-}})
-console.log(a)
+})
+// let name = '54354354'
+// People.prototype = {
+//   get name(){
+//     console.log('get')
+//     return name
+//   },
+//   set name(val){
+//     console.log('set')
+//     name = val
+//   }
+// }
+let man = new People()
+console.log(JSON.stringify(man))
