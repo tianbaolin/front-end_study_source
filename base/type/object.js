@@ -192,8 +192,8 @@
 // let a = new People()
 // let b = new People()
 // console.log(a.name,b.name)
-function People(){
-}
+// function People(){
+// }
 // People.prototype = {
 //   _name:'123',
 //   set name(val){
@@ -205,17 +205,17 @@ function People(){
 //     return this._name
 //   }
 // }
-People.prototype._name = 'tianbaolin'
-Object.defineProperty(People.prototype,'name',{
-  get: function(){
-    console.log('gey')
-    return this._name
-  },
-  set : function(val){
-    this._name
-  },
-  enumerable:true
-})
+// People.prototype._name = 'tianbaolin'
+// Object.defineProperty(People.prototype,'name',{
+//   get: function(){
+//     console.log('gey')
+//     return this._name
+//   },
+//   set : function(val){
+//     this._name
+//   },
+//   enumerable:true
+// })
 // let name = '54354354'
 // People.prototype = {
 //   get name(){
@@ -227,5 +227,126 @@ Object.defineProperty(People.prototype,'name',{
 //     name = val
 //   }
 // }
-let man = new People()
-console.log(JSON.stringify(man))
+// let man = new People()
+// console.log(JSON.stringify(man))
+// function People(){
+//   // return function(){}
+// }
+// let man = new People()
+// console.log(man)
+// function creatObject(x,y){
+//   let obj = Object.create({
+//     '__proto__':Object.prototype,
+//     constructor:creatObject
+//   })
+//   this = obj
+//   this.x = x;
+//   this.y = y
+//   return this
+// }
+
+// let obj = creatObject(x,y)
+// console.log(obj)
+// console.log(this)
+//  a = {
+//   say:function(){
+//     console.log(this)
+//   },
+//   c:{
+//     say(){
+//       console.log(this === b)
+//     }
+//   },
+//   d:{
+//     say:()=>{
+//       console.log(this === window)
+//     }
+//   },
+//   e:{
+//     say(){
+//       setTimeout(function(){
+//         console.log(this)
+//       },1000)
+//     },
+//     say2(){
+//       setTimeout(()=>{
+//         console.log(this)
+
+//       },1000)
+//     },
+//     say3:()=>{
+//       console.log(this)
+//     }
+//   }
+// }
+// b = {
+//   say:a.d.say
+// }
+// a.e.say3()
+// a = {
+//   say:function(callback){
+//     let that = this
+//     callback(that)
+//   }
+// }
+// b={
+//   say:function(that){
+//     console.log(1,that)
+//     console.log(2,this)
+//   }
+// }
+// a.say(b.say)
+// (function(){console.log(this === global)})()
+// function a(){
+// console.log(this === global)
+// }
+// a()
+// a = {
+//   say:function(callback){
+//     console.log(this === b)
+//     callback()
+//   }
+// }
+// b = {
+//   say:a.say
+// }
+// c = {
+//   say:function(){
+//     console.log(1,this === window)
+//     let say2 = function(){
+//       console.log(2,this === global)
+//     }
+//     say2()
+//   }
+// }
+// b.say(c.say)
+// c.say()
+// let a = {a:1,b:2,c:3,d:4}
+// console.log(a)
+// let arr = Object.entries(a)
+// console.log(arr)
+// let map = new Map(arr)
+// Object.freeze(a)
+// Object.isFrozen(a)
+// 深冻结函数.
+function deepFreeze(obj) {
+
+  // 取回定义在obj上的属性名
+  var propNames = Object.getOwnPropertyNames(obj);
+  console.log(propNames)
+  // 在冻结自身之前冻结属性
+  propNames.forEach(function(name) {
+    var prop = obj[name];
+
+    // 如果prop是个对象，冻结它
+    if (typeof prop == 'object' && prop !== null)
+      deepFreeze(prop);
+  });
+
+  // 冻结自身(no-op if already frozen)
+  return Object.freeze(obj);
+}
+let a ={}
+deepFreeze(a)
+
+
