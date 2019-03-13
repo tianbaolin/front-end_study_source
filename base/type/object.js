@@ -329,24 +329,89 @@
 // Object.freeze(a)
 // Object.isFrozen(a)
 // 深冻结函数.
-function deepFreeze(obj) {
+// function deepFreeze(obj) {
 
-  // 取回定义在obj上的属性名
-  var propNames = Object.getOwnPropertyNames(obj);
-  console.log(propNames)
-  // 在冻结自身之前冻结属性
-  propNames.forEach(function(name) {
-    var prop = obj[name];
+//   // 取回定义在obj上的属性名
+//   var propNames = Object.getOwnPropertyNames(obj);
+//   console.log(propNames)
+//   // 在冻结自身之前冻结属性
+//   propNames.forEach(function(name) {
+//     var prop = obj[name];
 
-    // 如果prop是个对象，冻结它
-    if (typeof prop == 'object' && prop !== null)
-      deepFreeze(prop);
-  });
+//     // 如果prop是个对象，冻结它
+//     if (typeof prop == 'object' && prop !== null)
+//       deepFreeze(prop);
+//   });
 
-  // 冻结自身(no-op if already frozen)
-  return Object.freeze(obj);
+//   // 冻结自身(no-op if already frozen)
+//   return Object.freeze(obj);
+// }
+// let a ={}
+// deepFreeze(a)
+// Object.is(NaN,NaN)
+// console.log(Object.is(NaN,NaN))
+// console.log(Object.is(0,-0))
+// let a = {
+//   a:1,
+//   b:2,
+//   c:3
+// }
+// let b = Object.getOwnPropertyDescriptor(a,'a')
+// b = Object.getPrototypeOf(a)
+// b = Object.getPrototypeOf(Function)
+// b = Object.values(a)
+// console.log(b)
+// let a ={
+//   name:'tianbaolin'
+// }
+// b = {
+//   d:a
+// }
+// console.log(a)
+// let fun = new Function("console.log('hello')")
+// let a = {
+//   name:'tianbaolibn'
+// }
+// let a = 2;
+//  function fun (){
+//    let a = 1;
+  //  return function fun2 (){
+  //    return a;
+  //  }
+  //  return new Function(a,"return a;")
+  // console.log(x,y,z)
+  // console.log(this)
+  // console.log(fun.caller)
+// }
+// let fun3 = fun()
+// fun3(3)
+// fun(1,2,3)
+// fun2 = function(x,y,z){
+//   console.log(arguments)
+//   fun.call(a,...arguments)
+// }
+// fun2(1,2,3)
+// Object.getOwnPropertyNames(fun2)
+// Object.getOwnPropertyDescriptor(fun2,'length')
+// fun(1,2,3)
+// let fun2 = fun.bind(a,1,2)
+// fun2(3)
+// fun2(1,2,3)
+// fun.call(a,1,2,3)
+// fun.apply(a,[1,2,3])
+// for(var i=0 ;i<5;i++){
+//   // console.log(i)
+//   setTimeout(()=>{
+//     console.log(i)
+//   },5000)
+// }
+// debugger;
+fun()
+function fun(){
+  console.log(this)
+  function fun2(){
+    console.log(this)
+  }
+  fun2() 
 }
-let a ={}
-deepFreeze(a)
-
 

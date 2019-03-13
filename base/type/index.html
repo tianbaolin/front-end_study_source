@@ -7,6 +7,92 @@
   <title>Document</title>
 </head>
 <body>
-  <script src="./object.js"></script>
+  <div id="div">hello</div>
+  <script>
+    // let dom = document.getElementById('div');
+    // console.log(Object.getOwnPropertyNames(dom))
+    // console.log(Object.getOwnPropertySymbols(dom))
+    // console.log(Object.keys(dom))
+    // console.log(dom.valueOf())
+    // dom.addEventListener('click',function(target){
+    //   console.log(this)
+    //   console.log(target)
+    // })
+    // let a = 'hello'
+    // function b(){
+    //   console.log('hello')
+    // }
+    // let a = {fun1:c,fun2:c,fun3:c}
+    // console.log(a)
+    // console.log(a)
+    // console.log(a)
+
+    // function c(){
+    //   console.log(a)
+    //   console.log(e)
+    //   var b = 123;
+    //   let e = 123;
+    //   function d(){
+    //     console.log(a)
+    //   }
+    //   d()
+    //   console.log(b)
+    //   // b()
+    // }
+    // a.fun1()
+    // a.fun2()
+    // a.fun3()
+    // c()
+    // let a = 1;
+    // console.log(a)
+    // {
+    //   let c = 2
+    //   {
+    //   console.log(a)
+    //   // console.log(b)
+    //   let b = 2
+    //   console.log(b)
+    // }
+    // console.log(c)
+    // }
+    // console.log(a)
+    let a = [1,2,3,4,5,6,7]
+    // a.forEach(item=>{
+    //   console.log(item)
+    // })
+    function b (arr){
+      // for(let index=0;index<a.length;index = index+2){
+      //   setTimeout(()=>{console.log(index)},5000)
+      // }
+      a.forEach(item=>{
+        setTimeout(()=>{console.log(item)},1000)
+      })
+    }
+    b(a)
+  </script>
+  <!-- <script>
+
+
+escapeHTML = (html = '') => {
+
+// Ensure that html is a string
+html += ''
+
+// Escape all critical characters
+html = html.replace(/&/g, '&amp;')
+           .replace(/</g, '&lt;')
+           .replace(/>/g, '&gt;')
+           .replace(/"/g, '&quot;')
+           .replace(/'/g, '&#039;')
+           .replace(/`/g, '&#96;')
+
+return html
+
+}
+    let url = "<script>alert(12321)<\/script>";
+      url = escapeHTML(url)
+    document.getElementsByTagName('div')[0].innerHTML = url
+  </script>
+  <script src="./object.js"></script> -->
 </body>
 </html>
