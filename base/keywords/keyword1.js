@@ -21,30 +21,30 @@
 //     console.log('hello')
 // }
 // a()
-class People{
-    constructor(x = 0,y = 0){
-        this.x = x;
-        this.y = y;
-        this.say = function(){
-            return this
-        }
-    }
+// class People{
+//     constructor(x = 0,y = 0){
+//         this.x = x;
+//         this.y = y;
+//         this.say = function(){
+//             return this
+//         }
+//     }
 
-    get name(){
-        return this.x
-    }
-    set name(name){
-        console.log(this)
-        this.x = name
-        return this.x
-    }
-    say2(){
-        return this
-    }
-    static say3(){
-        return this === People
-    }
-}
+//     get name(){
+//         return this.x
+//     }
+//     set name(name){
+//         console.log(this)
+//         this.x = name
+//         return this.x
+//     }
+//     say2(){
+//         return this
+//     }
+//     static say3(){
+//         return this === People
+//     }
+// }
 // let people = new People(3,3)
 // console.log(people)
 
@@ -71,13 +71,13 @@ class People{
 // console.log(ff.next('h'))
 // console.log(ff.next('i'))
 // 无限生成器，传参终止
-function* gen(params) {
-    let a = yield 'start'
-    while(a){
-        a = yield a
-    }
-    return 'end'
-}
+// function* gen(params) {
+//     let a = yield 'start'
+//     while(a){
+//         a = yield a
+//     }
+//     return 'end'
+// }
 // let ff = gen()
 // console.log(ff.next('start'))
 // console.log(ff.next('a'))
@@ -106,6 +106,75 @@ function* gen(params) {
 // result.then(res=>{
 //     console.log(res)
 // })
+// let a = {
+//     name:'tianbaolin'
+// }
+// function People(){
+//     console.assert(new.target === this.constructor)
+//     this.x = 1;
+//     this.y = 2;
+// }
+// let c = new People()
+// console.log(c)
+// let a = [1,2,3,4]
+// function fun([x,y,z]=a){
+//     console.log(x,y,z)
+// }
+// fun(a)
+// function fun2(x,y,z){
+//     console.log(x,y,z)
+// }
+// fun2(...a)
+// function fun3(...a){
+//     console.log(a)
+// }
+// fun2(...a)
+//  var a = 1;
+//  let d = 4
+// var b = function(){
+//     var b = 2
+//     console.log(this)
+//     // console.log(a)
+//     console.log(b)
+//     let a = function(){
+//         let c = 3
+//         console.log(c)
+
+//     }
+//     console.log(b)
+//     a()
+// }
+// b()
+// var tmp = new Date();
+
+// function f() {
+//   console.log(tmp);
+//   if (false) {
+//     var tmp = 'hello world';
+//   }
+// }
+// f(); 
+// function a(){
+//     console.log(b)
+//     if(false){
+//         function b(){
+
+//         }
+//     }
+// }
+// a()
+// var a = 3;
+// let a = a;
 let a = {
-    name:'tianbaolin'
+  b:function B(){
+
+  },
+  c:function C(){
+    function D(){
+      console.log(this)
+    }
+    D()
+    console.log(this.b)
+  }
 }
+a.c()

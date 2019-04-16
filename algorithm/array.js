@@ -1,4 +1,4 @@
-let _ = require('lodash')
+// let _ = require('lodash')
 // 查找元素出现次数
 // let a = [1,2,3,4,54,3,2,21,4];
 function fun1(arr, x) {
@@ -87,4 +87,114 @@ function fun8(){
 }
 // console.log(fun8(a))
 // 第一个满足条件
-console.log((a.filter(item=>item>7).shift()))
+// console.log((a.filter(item=>item>7).shift()))
+a = [1,2,3,4,5,4,3,2,1,3,4,5,6,7,3,2]
+let sum = 6
+function fun9(a,sum){
+let newA = [...new Set(a)]
+let res = []
+newA.map((item,index,current)=>{
+  let newCurrent = current.slice(index)
+  newCurrent.map((item2,index2)=>{
+    if(item+item2 === sum){
+      res.push([item,item2])
+    }
+  })
+})
+return res
+}
+function fun10(a,sum){
+  let res = []
+  a = [...new Set(a)]
+  a.map((item,index)=>{
+    let s = sum - item
+    if(a.includes(s,index) ){
+      res.push([item,s])
+    }
+  })
+  return res
+}
+// console.log(fun10(a,sum))
+
+a = [1, [2, 3],
+  [2, 3, 4,[5,7,[8,9,[1,3]]]],
+  [3, 2, 4],
+  [3, 4, [5, 6,[6,7]]]
+]
+
+// b = [].concat(...a)
+// b.some(item=>{
+//   return Array.isArray(item)
+// })
+function fun11(a){
+  let b = a
+  do{
+    b = [].concat(...b)
+  }while(b.some(item=>{
+    return Array.isArray(item)
+  }))
+  return b
+
+}
+// console.log(fun11(a))
+function fun12(item){
+  // console.log(arguments.callee.caller)
+  return [].concat(...item.map(item2=>{
+  // console.log(arguments.callee)
+    return Array.isArray(item2)?fun12(item2):item2
+  }))
+}
+// console.log(fun12(a))
+// 数组降维
+a = [1,2,3,[4,5,6,[7,8,9,[0]]],1,2,3]
+let res = []
+function fun13(param){
+  param.forEach((item)=>{
+    if(Array.isArray(item)){
+      fun13(item)
+    }else{
+      res.push(item)
+    }
+  })
+}
+function fun14(a){
+  return a.reduce((acc,item,index)=>{
+    return acc.concat(Array.isArray(item)?fun14(item):item)
+    // if(Array.isArray(item)){
+    //   return acc.concat(fun14(item))
+    // }else{
+    //   return acc.concat(item)
+    // }
+  },[])
+}
+// console.log(fun14(a))
+// console.log(res)
+// 排序
+a = [1.6,2.4,4.8,3.5,5.3,7.8,6.7,9.3,7.6,8.3,0]
+// res = a.sort((x,y)=>{return x - y})
+// console.log(res)
+// {4: [4.2], 6: [6.1, 6.3]}
+// groupBy([6.1, 4.2, 6.3], Math.floor);
+function groupBy(a) {
+  let res = {}
+  a.map(item=>{
+    let key = Math.round(item)
+    console.log(key)
+    if(res[key]){
+      res[key].push(item)
+    }else{
+      res[key]=[item]
+    }
+    // return item
+  })
+  return res
+}
+// console.log(groupBy(a))
+function groupBy2(param) {
+  return param.reduce((acc,item,params)=> {
+    let key = Math.round(item)
+    acc[key] = (acc[key] || []).concat([item])
+    return acc
+  },{})
+}
+// console.log(groupBy2(a))

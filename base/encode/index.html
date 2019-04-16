@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div::after{
+      content: '\03A9'
+    }
+  </style>
+</head>
+<body>
+  <div style="color:red">
+  </div>
+  <script>
+    let a = '我'
+    let code = a.charCodeAt(0)
+    console.log(code)
+    let code2 = code.toString(16)
+    console.log(code2)
+    console.log('code :', '\u6211');
+  </script>
+</body>
+</html>
