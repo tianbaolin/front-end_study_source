@@ -60,12 +60,45 @@
 // document.body.onblur = function(event) {
 //   console.log("event :", event);
 // };
-let app = document.getElementsByTagName("div");
-console.log("app", app);
-let [attribute] = app[0].attributes;
-console.log("app", app[0].attributes);
-// let a = document.createDocumentFragment("div");
-// console.log("a", [a]);
-setTimeout(() => {
-  app[0].remove();
-}, 2000);
+let app = document.getElementsByTagName("div")[0];
+
+document.addEventListener(
+  "click",
+  event => {
+    console.log("document 捕获", event);
+    event.stopPropagation();
+  },
+  true
+);
+app.addEventListener(
+  "click",
+  event => {
+    console.log("app 捕获", event);
+  },
+  true
+);
+app.addEventListener(
+  "click",
+  event => {
+    console.log("app 冒泡", event);
+  },
+  false
+);
+document.addEventListener(
+  "click",
+  event => {
+    console.log("document 冒泡", event);
+  },
+  false
+);
+// let event = new MouseEvent('click')
+// let event = new CustomEvent('click')
+// app.dispatchEvent(event)
+// console.log("app", app);
+// let [attribute] = app[0].attributes;
+// console.log("app", app[0].attributes);
+// // let a = document.createDocumentFragment("div");
+// // console.log("a", [a]);
+// setTimeout(() => {
+//   app[0].remove();
+// }, 2000);
