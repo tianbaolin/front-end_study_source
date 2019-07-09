@@ -55,27 +55,29 @@
 // fun(a)
 // a.b = 3
 // console.log('object :', b);
-function currying(fun,cacheArray=[]) {
+function curry(fun,oldCache=[]) {
   // 原始函数参数个数
   const { length } = fun;
-  // cache参数缓存,不能反向更改cacheArray的值，需要浅复制
-  function middleFun(param,cache=[...cacheArray]) {
-    console.log('cache', cache)
-    cache.push(param);
+  return  (...newCache)=> {
+    // 参数拼接
+    const _cache = [...oldCache,...newCache]
     // 参数是否全部就位
-    if (cache.length < length) {
-      return currying(fun,cache);
+    if (_cache.length < length) {
+      return curry(fun,_cache);
     }
-    return fun(...cache);
+    return fun(..._cache);
   }
-  return middleFun;
 }
 
 function calculate(x, y, z) {
   return x * y * z;
 }
-const curry = currying(calculate);
-console.log('curry', curry)
-console.log('object', curry(5)(6)(9))
-console.log('object', curry(1)(2)(4))
+const calculateCurry = curry(calculate);
+console.log('curry', calculateCurry)
+console.log('object', calculateCurry(5)(6)(9))
+console.log('object', calculateCurry(1)(2)(4))
+console.log('object', calculateCurry(8,2)(2))
+console.log('object', calculateCurry(8,2,6))
+
+
 
