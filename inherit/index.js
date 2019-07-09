@@ -33,16 +33,16 @@
 // let man = new Man();
 // console.log("man", man);
 // console.log("man", man instanceof Man);
-function People(params) {
-  this.name = "tbl";
+function People() {
+  this.name = 'tbl';
   this.age = 26;
 }
-let people = new People();
-console.log("People.constructor", People.constructor === Function);
-console.log("People.prototype", People.prototype.constructor === People);
+const people = new People();
+console.log('People.constructor', People.constructor === Function);
+// console.log('People.prototype', People.prototype.constructor === People);
 console.log(
-  "People.prototype.__proto",
-  People.prototype.__proto__ === Object.prototype
+  'People.prototype.__proto',
+  // People.prototype.__proto__ === Object.prototype,
 );
-console.log("people.constructor", people.constructor === People);
-console.log('people.__proto__', people.__proto__ === People.prototype)
+console.log('people.constructor', people.constructor === People);
+// console.log('people.__proto__', people.__proto__ === People.prototype);
