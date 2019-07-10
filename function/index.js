@@ -200,28 +200,63 @@
 // console.log('object', getPlatform());
 
 
-function memorize(fun) {
-  const cache = {};
-  return (...params) => {
-    const sign = params.join(',');
-    // console.count(sign);
-    if (sign in cache) {
-      return cache[sign];
-    }
-    const res = fun(...params);
-    cache[sign] = res;
-    return res;
+// function memorize(fun) {
+//   const cache = {};
+//   return (...params) => {
+//     const sign = params.join(',');
+//     // console.count(sign);
+//     if (sign in cache) {
+//       return cache[sign];
+//     }
+//     const res = fun(...params);
+//     cache[sign] = res;
+//     return res;
+//   };
+// }
+// const memorizeAdd = memorize((n) => {
+//   console.count('fibola');
+//   if (n < 2) {
+//     return n;
+//   }
+//   return memorizeAdd(n - 1) + memorizeAdd(n - 2);
+// });
+
+
+// console.log('object', 'start');
+// console.log('object', memorizeAdd(44));
+// console.log('object', memorizeAdd(44));
+
+// function curry(fun, ...param) {
+//   return function middle(...x) {
+//     // console.log('x', x);
+//     const params = [...param, ...x];
+//     if (params.length < fun.length) {
+//       return curry(fun, ...params);
+//     }
+//     return fun(...params);
+//   };
+// }
+// function discountCompute(discount, price) {
+//   return discount * price;
+// }
+// const discountComputeCurry = curry(discountCompute);
+// const discountCompute95 = discountComputeCurry(0.95);
+// console.log('object', discountCompute95(200));
+// console.log('object', discountCompute95(100));
+// console.log('object', discountCompute95(300));
+Function.prototype.uncurrying = function () {
+  // 函数本身
+  const self = this;
+  return function _uncurry(obj, ...params) {
+    return self.call(obj, ...params);
   };
-}
-const memorizeAdd = memorize((n) => {
-  console.count('fibola');
-  if (n < 2) {
-    return n;
-  }
-  return memorizeAdd(n - 1) + memorizeAdd(n - 2);
-});
+};
 
-
-console.log('object', 'start');
-console.log('object', memorizeAdd(44));
-console.log('object', memorizeAdd(44));
+const a = {
+  say(...param) {
+    console.log('this :', this);
+    return param;
+  },
+};
+const uncurryingA = a.say.uncurrying();
+console.log('object :', uncurryingA({ a: 1, b: 2 }, 1, 2, 3));
