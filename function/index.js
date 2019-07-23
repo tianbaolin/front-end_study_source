@@ -1,16 +1,16 @@
 // 计算奖金
-function calculateBounds(baseSalary, level) {
-  const levelMap = {
-    A: 10,
-    B: 7,
-    C: 5,
-    D: 3,
-    E: 1,
-  };
-  return baseSalary * (levelMap[level] || 1);
-}
-const yearBounds = calculateBounds(12, 'B');
-console.log('yearBounds', yearBounds);
+// function calculateBounds(baseSalary, level) {
+//   const levelMap = {
+//     A: 10,
+//     B: 7,
+//     C: 5,
+//     D: 3,
+//     E: 1,
+//   };
+//   return baseSalary * (levelMap[level] || 1);
+// }
+// const yearBounds = calculateBounds(12, 'B');
+// console.log('yearBounds', yearBounds);
 // if(true){
 //   function say(){
 //     console.log(1)
@@ -257,19 +257,53 @@ console.log('yearBounds', yearBounds);
 // console.log('object', discountCompute95(200));
 // console.log('object', discountCompute95(100));
 // console.log('object', discountCompute95(300));
-Function.prototype.uncurrying = function () {
-  // 函数本身
-  const self = this;
-  return function _uncurry(obj, ...params) {
-    return self.call(obj, ...params);
-  };
-};
+// Function.prototype.uncurrying = function () {
+//   // 函数本身
+//   const self = this;
+//   return function _uncurry(obj, ...params) {
+//     return self.call(obj, ...params);
+//   };
+// };
 
-const a = {
-  say(...param) {
-    console.log('this :', this);
-    return param;
-  },
-};
-const uncurryingA = a.say.uncurrying();
-console.log('object :', uncurryingA({ a: 1, b: 2 }, 1, 2, 3));
+// const a = {
+//   say(...param) {
+//     console.log('this :', this);
+//     return param;
+//   },
+// };
+// const uncurryingA = a.say.uncurrying();
+// console.log('object :', uncurryingA({ a: 1, b: 2 }, 1, 2, 3));
+// 发布订阅模式
+// 发布者
+
+// const publisher = {
+//   // 订阅者
+//   eventListeners: {},
+//   // 订阅方法
+//   subscribe(eventType, listener) {
+//     if (!this.eventListeners[eventType]) {
+//       this.eventListeners[eventType] = [];
+//     }
+//     // 添加订阅者进缓存
+//     this.eventListeners[eventType].push(listener);
+//   },
+//   // 发布方法
+//   dispatchEvent(eventType, eventObject) {
+//     this.eventListeners[eventType].map(listener => listener(eventObject));
+//   },
+// };
+// publisher.subscribe('eventType', (res) => {
+//   // console.log('this', this);
+//   console.log('res', res);
+// });
+// publisher.dispatchEvent('eventType', { a: 2 });
+
+// // 每个对象添加发布-订阅模式
+// function installEvent(obj) {
+//   Object.keys(publisher).map(key => obj[key] = publisher[key]);
+// }
+
+function Tea(params) {
+
+}
+console.log('object', Tea.prototype.constructor === Tea);
