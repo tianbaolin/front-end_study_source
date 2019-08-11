@@ -14,12 +14,24 @@
         </span>
         <div v-for='item in items'>{{item}}</div>
         <input type="text" name="name" id="name" v-model="name" />
+        <div v-html="name"></div>
         <ol>
             <!-- 创建一个 todo-item 组件的实例 -->
-            <todo-item v-bind:todo="todo"></todo-item>
+            <todo-item v-bind:todo="todo" v-bind:html="html">
+              123
+            </todo-item>
         </ol>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <template lang="html" id="temp">
+      <div>
+        <slot></slot>
+        {{todo.next}}
+        <span v-html="html"></span>
+        <slot></slot>
+
+      </div>
+    </template>
+    <script src="./vue.js"></script>
     <script src="./index.js"></script>
 </body>
 </html>
