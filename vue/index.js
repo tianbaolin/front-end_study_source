@@ -34,6 +34,3 @@ const app = new Vue({
     },
   },
 });
-
-// console.log('app :', app);
-// console.log('object :', app instanceof window.Vue);
